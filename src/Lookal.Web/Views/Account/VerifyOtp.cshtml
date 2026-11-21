@@ -1,0 +1,39 @@
+@model Lookal.Web.ViewModels.VerifyOtpViewModel
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostEnv
+@{
+    ViewData["Title"] = "Enter your code";
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-5">
+        <h1 class="h3 mb-1">Enter your code</h1>
+        <p class="text-muted mb-4">We sent a 6-digit code to your mobile number.</p>
+
+        @if (TempData["Status"] is string status)
+        {
+            <div class="alert alert-success" role="status">@status</div>
+        }
+
+        <form asp-action="VerifyOtp" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-4">
+                <label asp-for="Code" class="form-label"></label>
+                <input asp-for="Code" inputmode="numeric" autocomplete="one-time-code" maxlength="6"
+                       class="form-control form-control-lg text-center" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">Verify and continue</button>
+        </form>
+
+        <form asp-action="ResendCode" method="post" class="mt-3 text-center">
+            <button type="submit" class="btn btn-link">Send a new code</button>
+        </form>
+
+        @if (HostEnv.IsDevelopment())
+        {
+            <p class="text-muted mt-4 mb-0">Development only: use code 123456.</p>
+        }
+    </div>
+</div>
