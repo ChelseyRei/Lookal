@@ -1,47 +1,72 @@
 @model Lookal.Web.ViewModels.RegisterViewModel
 @{
-    ViewData["Title"] = "Register";
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Create your account";
 }
 
-<div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-5">
-        <h1 class="h3 mb-1">Create your account</h1>
-        <p class="text-muted mb-4">We'll send a code to your mobile number to verify it.</p>
-
-        <form asp-action="Register" method="post" novalidate>
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
-            <div class="mb-3">
-                <label asp-for="FullName" class="form-label"></label>
-                <input asp-for="FullName" autocomplete="name" class="form-control form-control-lg" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="DateOfBirth" class="form-label"></label>
-                <input asp-for="DateOfBirth" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control form-control-lg" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="PhoneNumber" class="form-label"></label>
-                <input asp-for="PhoneNumber" type="tel" inputmode="tel" autocomplete="tel"
-                       placeholder="09XX XXX XXXX" class="form-control form-control-lg" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-
-            <div class="mb-4">
-                <label asp-for="Password" class="form-label"></label>
-                <input asp-for="Password" type="password" autocomplete="new-password" class="form-control form-control-lg" />
-                <p class="text-muted mb-0">At least 8 characters, with one letter and one number.</p>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-lg w-100">Send code</button>
-        </form>
-
-        <p class="mt-4 mb-0 text-center">
-            Already have an account? <a asp-action="Login">Log in</a>
-        </p>
+@section Brand {
+    <div class="brand-hero">
+        <h1>Get help from people nearby</h1>
+        <p>Create an account in a few steps. Your mobile number is confirmed with a one-time code before the account is saved.</p>
     </div>
+
+    <ul class="brand-points">
+        <li class="point">
+            <span class="point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+            <div><strong>One number, one account</strong><span>Each mobile number can register once.</span></div>
+        </li>
+        <li class="point">
+            <span class="point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <div><strong>Verified before you help</strong><span>Helpers upload an ID and selfie before they can accept a task.</span></div>
+        </li>
+        <li class="point">
+            <span class="point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span>
+            <div><strong>Adults only</strong><span>You must be 18 or older. Your date of birth is checked when you sign up.</span></div>
+        </li>
+    </ul>
+}
+
+<p class="step-count">Step 1 of 4</p>
+<div class="steps" aria-hidden="true">
+    <span class="current"></span><span></span><span></span><span></span>
 </div>
+
+<h2 class="title">Create your account</h2>
+<p class="subtitle">Enter your details. We'll send a code to your mobile number.</p>
+
+<form asp-controller="Account" asp-action="Register" method="post" novalidate>
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="field">
+        <label asp-for="FullName" class="label"></label>
+        <input asp-for="FullName" class="input" autocomplete="name" placeholder="Full name" />
+        <span asp-validation-for="FullName" class="hint text-danger"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="DateOfBirth" class="label"></label>
+        <input asp-for="DateOfBirth" type="date" asp-format="{0:yyyy-MM-dd}" class="input" />
+        <p class="hint">You must be 18 or older.</p>
+        <span asp-validation-for="DateOfBirth" class="hint text-danger"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="PhoneNumber" class="label"></label>
+        <input asp-for="PhoneNumber" class="input" inputmode="tel" autocomplete="tel" placeholder="09XX XXX XXXX" />
+        <p class="hint">We'll send a 6-digit code to this number.</p>
+        <span asp-validation-for="PhoneNumber" class="hint text-danger"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="Password" class="label"></label>
+        <input asp-for="Password" class="input" type="password" autocomplete="new-password" placeholder="Create a password" />
+        <p class="hint">At least 8 characters, with one letter and one number.</p>
+        <span asp-validation-for="Password" class="hint text-danger"></span>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="button button-primary">Send code</button>
+    </div>
+</form>
+
+<p class="footnote">Already have an account? <a asp-controller="Account" asp-action="Login">Log in</a></p>

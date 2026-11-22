@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="page-head">
+    <div>
+        <h1 class="page-title">Your profile</h1>
+        <p class="page-sub">Your rating, requests, and account settings will appear here.</p>
+    </div>
+</div>
+
+<form asp-controller="Account" asp-action="Logout" method="post" class="form-actions">
+    <button type="submit" class="button button-secondary button-compact">Log out</button>
+</form>

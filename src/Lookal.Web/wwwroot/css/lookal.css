@@ -533,3 +533,14 @@ body {
   font-weight: 600;
   line-height: 1;
 }
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}

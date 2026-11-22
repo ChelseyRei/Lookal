@@ -151,6 +151,9 @@ public class AccountController : Controller
 
     [Authorize]
     public IActionResult JoinCommunity() => View();
+    
+    [Authorize]
+    public IActionResult VerifyId() => View();
 
     [Authorize]
     public IActionResult Profile()

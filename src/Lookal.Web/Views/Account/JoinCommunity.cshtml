@@ -1,10 +1,65 @@
 @{
-    ViewData["Title"] = "Join a community";
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Your city";
 }
 
-<div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-5">
-        <h1 class="h3 mb-2">You're signed in</h1>
-        <p class="text-muted mb-0">Next, you'll join a community to see requests near you. This step comes in a later feature.</p>
+@section Brand {
+    <div class="brand-hero">
+        <h1>Your requests stay local</h1>
+        <p>Choose your city to see requests nearby. Your street address is optional and is never shown on the public feed.</p>
     </div>
+
+    <ul class="brand-points">
+        <li class="point">
+            <span class="dot dot-done"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><strong>Your details</strong><span>Name, date of birth, and password</span></div>
+        </li>
+        <li class="point">
+            <span class="dot dot-done"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><strong>Confirm your number</strong><span>One-time code sent by SMS</span></div>
+        </li>
+        <li class="point">
+            <span class="dot dot-current">3</span>
+            <div><strong>Your city</strong><span>Optional. You can skip this step</span></div>
+        </li>
+        <li class="point point-todo">
+            <span class="dot dot-todo">4</span>
+            <div><strong>Verify your ID</strong><span>Optional. Needed to accept tasks</span></div>
+        </li>
+    </ul>
+}
+
+<p class="step-count">Step 3 of 4</p>
+<div class="steps" aria-hidden="true">
+    <span class="done"></span><span class="done"></span><span class="current"></span><span></span>
+</div>
+
+<h2 class="title">Your city</h2>
+<p class="subtitle">Pick the city you live in. You can skip this step and add it later.</p>
+
+<div class="field">
+    <label class="label" for="city">City</label>
+    <select class="input" id="city" name="city">
+        <option value="" selected disabled>Select your city</option>
+        <option>Manila</option>
+        <option>Quezon City</option>
+        <option>Makati</option>
+        <option>Mandaluyong</option>
+        <option>Pasig</option>
+        <option>San Juan</option>
+        <option>Taguig</option>
+        <option>Other</option>
+    </select>
+    <p class="hint">Requests from this city will appear in your feed.</p>
+</div>
+
+<div class="field">
+    <label class="label" for="address">Street address (optional)</label>
+    <input class="input" id="address" name="address" type="text" autocomplete="street-address" placeholder="House number, street, barangay" />
+    <p class="hint">Shared only after you confirm a helper. Never shown on the public feed.</p>
+</div>
+
+<div class="form-actions">
+    <a class="button button-primary" asp-controller="Account" asp-action="VerifyId">Continue</a>
+    <a class="button button-secondary" asp-controller="Account" asp-action="VerifyId">Skip for now</a>
 </div>
