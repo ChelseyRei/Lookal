@@ -1,0 +1,70 @@
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Verify your ID";
+}
+
+@section Brand {
+    <div class="brand-hero">
+        <h1>Verified helpers, safer errands</h1>
+        <p>Every helper confirms their identity before accepting a task. An admin reviews your ID and selfie, and they are kept private.</p>
+    </div>
+
+    <ul class="brand-points">
+        <li class="point">
+            <span class="dot dot-done"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><strong>Your details</strong><span>Name, date of birth, and password</span></div>
+        </li>
+        <li class="point">
+            <span class="dot dot-done"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><strong>Confirm your number</strong><span>One-time code sent by SMS</span></div>
+        </li>
+        <li class="point">
+            <span class="dot dot-done"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><strong>Your city</strong><span>Riverside Community</span></div>
+        </li>
+        <li class="point">
+            <span class="dot dot-current">4</span>
+            <div><strong>Verify your ID</strong><span>Optional. Needed to accept tasks</span></div>
+        </li>
+    </ul>
+}
+
+<p class="step-count">Step 4 of 4</p>
+<div class="steps" aria-hidden="true">
+    <span class="done"></span><span class="done"></span><span class="done"></span><span class="current"></span>
+</div>
+
+<h2 class="title">Verify your ID</h2>
+<p class="subtitle">An admin reviews your ID and selfie. You can browse requests while you wait, but you need to be verified to accept one.</p>
+
+<div class="field">
+    <span class="label">Government ID</span>
+    <label class="upload">
+        <input class="visually-hidden" type="file" name="idPhoto" accept="image/jpeg,image/png" />
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M14 10h4M14 14h4"/></svg>
+        <strong>Upload your ID</strong>
+        <small>JPG or PNG, up to 5 MB</small>
+    </label>
+</div>
+
+<div class="field">
+    <span class="label">Selfie</span>
+    <label class="upload">
+        <input class="visually-hidden" type="file" name="selfie" accept="image/jpeg,image/png" />
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <strong>Upload a selfie</strong>
+        <small>JPG or PNG, up to 5 MB</small>
+    </label>
+</div>
+
+<div class="privacy-note">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <span>Your ID is stored privately and is only seen by admins.</span>
+</div>
+
+<div class="form-actions">
+    <a class="button button-primary" asp-controller="Home" asp-action="Index">Submit for review</a>
+    <a class="button button-secondary" asp-controller="Home" asp-action="Index">Skip for now</a>
+</div>
+
+<p class="footnote">You can skip this for now. You can still browse requests, but you'll need to verify before you accept one.</p>
