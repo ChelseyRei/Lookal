@@ -1,0 +1,52 @@
+@model Lookal.Web.ViewModels.LoginViewModel
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Log in";
+}
+
+@section Brand {
+    <div class="brand-hero">
+        <h1>Quick help from people nearby</h1>
+        <p>Post a small errand or pick one up in your neighborhood. Helpers are ID-verified, requests stay in your community, and you pay in cash when the job is done.</p>
+    </div>
+
+    <ul class="brand-points">
+        <li class="point">
+            <span class="point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <div><strong>Verified helpers</strong><span>Helpers upload an ID and selfie before accepting a task.</span></div>
+        </li>
+        <li class="point">
+            <span class="point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><strong>Local by design</strong><span>Requests appear only to members of your community.</span></div>
+        </li>
+        <li class="point">
+            <span class="point-icon point-peso" aria-hidden="true">₱</span>
+            <div><strong>Cash on completion</strong><span>No online payments. Settle the fee in person when the task is done.</span></div>
+        </li>
+    </ul>
+}
+
+<h2 class="title">Log in</h2>
+<p class="subtitle">Use your mobile number and password.</p>
+
+<form asp-controller="Account" asp-action="Login" method="post" novalidate>
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="field">
+        <label asp-for="PhoneNumber" class="label"></label>
+        <input asp-for="PhoneNumber" class="input" inputmode="tel" autocomplete="username" placeholder="09XX XXX XXXX" />
+        <span asp-validation-for="PhoneNumber" class="hint text-danger"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="Password" class="label"></label>
+        <input asp-for="Password" class="input" autocomplete="current-password" placeholder="Enter your password" />
+        <span asp-validation-for="Password" class="hint text-danger"></span>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="button button-primary">Log in</button>
+    </div>
+</form>
+
+<p class="footnote">New here? <a asp-controller="Account" asp-action="Register">Create an account</a></p>

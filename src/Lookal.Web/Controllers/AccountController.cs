@@ -147,10 +147,17 @@ public class AccountController : Controller
         return RedirectToAction(nameof(Login));
     }
 
-    // ---------- Placeholder until the Communities feature ----------
+    // ---------- Pages after login ----------
 
     [Authorize]
     public IActionResult JoinCommunity() => View();
+
+    [Authorize]
+    public IActionResult Profile()
+    {
+        ViewData["NavActive"] = "profile";
+        return View();
+    }
 
     // ---------- Helpers ----------
 
