@@ -13,20 +13,26 @@
   --line: #D9D3C9;
   --line-soft: #E6E0D8;
   --line-card: #EEE9E1;
-  --sand: #E3DDD3;
-  --chip: #F1ECE4;
+  --sand: #ffe8a8;
+  --chip: #f5e7c2;
   --tag: #E8EDF7;
-  --error: #B42318;
+  --accent: #F5A623;
+  --background: #F7F9F9;
+  --text: #1F2A2E;
+  --muted-text: #5B6B70;
+  --success: #2E7D32;
+  --warning: #B26A00;
+  --danger: #C62828;
   --on-navy-muted: #B9C2D6;
   --font: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Bootstrap's .text-danger reads this for validation messages */
+  --bs-danger-rgb: 180, 35, 24;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; }
+html, body { min-height: 100%; }
 body {
   font-family: var(--font);
-  font-size: 16px;
-  line-height: 1.5;
   color: var(--ink);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
@@ -36,18 +42,9 @@ ul { padding: 0; list-style: none; }
 a { color: var(--navy); font-weight: 600; text-underline-offset: 3px; }
 button, input, select { font: inherit; color: inherit; }
 
-.avatar { text-decoration: none; }
 .icon { width: 20px; height: 20px; flex-shrink: 0; }
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
 
-/* Auth pages: login, registration, and the setup steps */
+/* Auth pages: login, registration, and setup steps */
 .split { display: flex; min-height: 100vh; }
 .brand-panel {
   flex: 0 0 52.78%;
@@ -67,17 +64,6 @@ button, input, select { font: inherit; color: inherit; }
 .form-wrap { width: 100%; max-width: 400px; }
 
 .logo { display: inline-flex; align-items: center; gap: 14px; color: inherit; text-decoration: none; }
-.logo-mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--vermilion);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.logo-mark svg { width: 22px; height: 22px; }
 .logo-name { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
 
 .brand-hero { margin-top: 150px; }
@@ -96,16 +82,18 @@ button, input, select { font: inherit; color: inherit; }
 .point > div > span { display: block; margin-top: 2px; font-size: 15px; color: var(--on-navy-muted); }
 .point-todo strong { color: var(--on-navy-muted); }
 .point-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 48px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
   background: var(--navy-soft);
   color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
 }
+.point-peso { font-size: 22px; font-weight: 600; line-height: 1; }
+
 .dot {
   width: 40px;
   height: 40px;
@@ -146,25 +134,6 @@ button, input, select { font: inherit; color: inherit; }
 .input::placeholder { color: var(--placeholder); }
 .input:focus { border: 1.5px solid var(--vermilion); box-shadow: 0 0 0 4px var(--vermilion-ring); }
 .input-code { text-align: center; font-size: 22px; letter-spacing: 0.3em; }
-.input-wrap { position: relative; }
-.input-wrap .input { padding-right: 52px; }
-.icon-button {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  border: 0;
-  border-radius: 8px;
-  background: none;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.icon-button .icon { width: 20px; height: 20px; }
 .hint { margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--muted); }
 
 .upload {
@@ -229,8 +198,18 @@ button, input, select { font: inherit; color: inherit; }
   text-decoration: none;
 }
 .footnote { margin-top: 28px; text-align: center; font-size: 15px; color: var(--muted); }
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
 
-/* Home page */
+/* Signed-in pages: top bar, feed, and profile */
 .topbar {
   position: sticky;
   top: 0;
@@ -244,8 +223,6 @@ button, input, select { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--line-soft);
 }
 .topbar .logo { color: var(--navy); }
-.topbar .logo-mark { width: 36px; height: 36px; border-radius: 10px; background: var(--navy); }
-.topbar .logo-mark svg { width: 18px; height: 18px; }
 .topbar .logo-name { font-size: 22px; }
 .nav-links { display: flex; align-items: center; gap: 36px; font-size: 16px; }
 .nav-links a { font-weight: 400; color: var(--muted); text-decoration: none; }
@@ -267,6 +244,7 @@ button, input, select { font: inherit; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 .page { padding: 36px 48px 64px; }
 .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
@@ -310,6 +288,15 @@ button, input, select { font: inherit; color: inherit; }
 .banner-text span { display: block; margin-top: 2px; font-size: 14px; color: var(--on-navy-muted); }
 .banner .button-compact { background: var(--white); color: var(--navy); }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  margin-top: 22px;
+}
+.chips-row .chips { margin-top: 0; }
 .chip {
   display: inline-flex;
   align-items: center;
@@ -336,7 +323,7 @@ button, input, select { font: inherit; color: inherit; }
   padding: 4px 10px;
   border-radius: 6px;
   background: var(--chip);
-  color: var(--muted);
+  color: var(--text);
   font-size: 13px;
   font-weight: 500;
 }
@@ -375,9 +362,42 @@ button, input, select { font: inherit; color: inherit; }
 }
 .card-action { display: flex; align-items: center; gap: 16px; }
 .fee { font-size: 20px; font-weight: 600; color: var(--navy); }
-.bottom-nav { display: none; }
 
-/* Phones: stack the split layout and show the bottom navigation */
+.rating {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+}
+.star { color: var(--accent); }
+
+/* Phone bottom navigation */
+.lookal-bottom-nav {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  display: flex;
+  background: var(--white);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.lookal-bottom-nav a {
+  flex: 1;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.lookal-bottom-nav a.active { color: var(--navy); font-weight: 600; }
+
+/* Phones: stack the split layout and reduce the page padding */
 @media (max-width: 900px) {
   .split { flex-direction: column; }
   .brand-panel { flex: none; padding: 32px 24px; }
@@ -388,159 +408,12 @@ button, input, select { font: inherit; color: inherit; }
   .form-panel { align-items: flex-start; padding: 32px 20px 48px; }
   .title { font-size: 28px; }
   .topbar { padding: 0 20px; }
-  .nav-links { display: none; }
   .page { padding: 24px 20px 96px; }
   .page-head { flex-direction: column; align-items: flex-start; }
   .cards { grid-template-columns: 1fr; }
-  .bottom-nav {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    background: var(--white);
-    border-top: 1px solid var(--line);
-  }
-  .bottom-nav a {
-    flex: 1;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    color: var(--muted);
-    text-decoration: none;
-  }
-  .bottom-nav a.active { color: var(--navy); font-weight: 600; }
 }
 
-/* Lookal palette. Views use these variables, not hardcoded colors. */
-:root {
-  --lookal-navy: #1C2541;
-  --lookal-action: #E4572E;
-  --lookal-action-hover: #D14E28;
-  --lookal-paper: #FAF8F5;
-  --lookal-surface: #FFFFFF;
-  --lookal-text: #1B1B1F;
-  --lookal-text-muted: #6B6B73;
-  --lookal-border: #D9D3C9;
-  --lookal-error: #B42318;
-
-  /* Point Bootstrap's variables at the palette */
-  --bs-body-bg: var(--lookal-paper);
-  --bs-body-color: var(--lookal-text);
-  --bs-link-color-rgb: 28, 37, 65;
-  --bs-primary-rgb: 228, 87, 46;
-  --bs-danger-rgb: 180, 35, 24;
-}
-
-body {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* Vermilion for the main action on each page */
-.btn-primary {
-  --bs-btn-bg: var(--lookal-action);
-  --bs-btn-border-color: var(--lookal-action);
-  --bs-btn-hover-bg: var(--lookal-action-hover);
-  --bs-btn-hover-border-color: var(--lookal-action-hover);
-  --bs-btn-active-bg: var(--lookal-action-hover);
-  --bs-btn-active-border-color: var(--lookal-action-hover);
-  --bs-btn-disabled-bg: var(--lookal-action);
-  --bs-btn-disabled-border-color: var(--lookal-action);
-  --bs-btn-focus-shadow-rgb: 228, 87, 46;
-}
-
-.text-muted {
-  color: var(--lookal-text-muted) !important;
-}
-
-.form-control {
-  border-color: var(--lookal-border);
-}
-
-.form-control:focus {
-  border-color: var(--lookal-action);
-  box-shadow: 0 0 0 0.2rem rgba(228, 87, 46, 0.25);
-}
-
-.lookal-navbar {
-  background-color: var(--lookal-navy);
-}
-
-/* Bottom navigation for phones */
-.lookal-bottom-nav {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1030;
-  display: flex;
-  background-color: var(--lookal-surface);
-  border-top: 1px solid var(--lookal-border);
-  padding-bottom: env(safe-area-inset-bottom);
-}
-
-.lookal-bottom-nav a {
-  flex: 1;
-  min-height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: var(--lookal-text-muted);
-  text-decoration: none;
-}
-
-.lookal-bottom-nav a.active {
-  color: var(--lookal-navy);
-  font-weight: 600;
-}
-
-.lookal-bottom-nav a.disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
+/* Below 768px the bottom navigation replaces the top links */
 @media (max-width: 767.98px) {
-  .lookal-main {
-    margin-bottom: 4.5rem;
-  }
-}
-
-/*pang center ng icon kase kulit nila*/
-.point-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--navy-soft);
-  color: var(--white);
-}
-
-.point-icon .icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-}
-
-.point-peso {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1;
-}
-
-.link-button {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--navy);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
+  .nav-links { display: none; }
 }
