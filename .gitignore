@@ -431,3 +431,6 @@ FodyWeavers.xsd
 /uploads/
 /src/Lookal.Web/wwwroot/uploads/
 .env
+
+bin/
+obj/
